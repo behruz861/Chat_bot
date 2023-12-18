@@ -1,0 +1,15 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+    <h2>Чат с ботом</h2>
+    <div style="height: 200px; overflow-y: scroll;">
+        {% for message in messages %}
+            <p>{{ message.content }}</p>
+        {% endfor %}
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="Введите сообщение" required>
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}
